@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luka Treven – Portfolio</title>
+  <meta name="description" content="Portfolio Luke Trevna – elektronika, avtomatika in 3D prototipiranje." />
+  <meta name="theme-color" content="#0b0f14" />
+  <meta property="og:title" content="Luka Treven – Portfolio" />
+  <meta property="og:description" content="Electronics · PCBs · Automation · Prototyping" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <canvas id="circuit" aria-hidden="true"></canvas>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <a href="#top" class="logo" aria-label="Luka Treven">
+      <span class="logo-mark">LT</span><span class="logo-dot"></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about" data-i18n="nav.about">O meni</a>
+      <a href="#projects" data-i18n="nav.projects">Projekti</a>
+      <a href="#experience" data-i18n="nav.experience">Izkušnje</a>
+      <a href="#skills" data-i18n="nav.skills">Kompetence</a>
+      <a href="#contact" data-i18n="nav.contact">Kontakt</a>
+    </nav>
+    <div class="nav-actions">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" data-lang="sl" aria-pressed="true">SL</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <p class="mono hero-hello"><span class="led"></span><span data-i18n="hero.hello">Pozdravljeni, sem</span></p>
+          <h1 class="hero-name">Luka<br /><span class="grad">Treven</span></h1>
+          <p class="hero-role" data-i18n="hero.role">Študent elektrotehnike · Avtomatika in energetika</p>
+          <p class="hero-tagline" data-i18n="hero.tagline"></p>
+          <p class="mono hero-typed"><span data-i18n="hero.typedPrefix">Fokus:</span> <span id="typed"></span><span class="caret">_</span></p>
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary" data-i18n="hero.ctaWork">Poglej projekte</a>
+            <a href="#contact" class="btn btn-ghost" data-i18n="hero.ctaContact">Kontaktiraj me</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="chip" id="chip">
+            <div class="chip-pins top"></div><div class="chip-pins bottom"></div>
+            <div class="chip-pins left"></div><div class="chip-pins right"></div>
+            <div class="chip-core">
+              <img src="assets/profile.jpg" alt="Luka Treven" class="avatar" onerror="this.remove()" />
+              <span class="avatar-fallback">LT</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="#about" class="scroll-hint mono"><span data-i18n="hero.scroll">Pomakni navzdol</span><i></i></a>
+    </section>
+
+    <!-- ============ STATS ============ -->
+    <section class="stats reveal">
+      <div class="stat"><b>🥇</b><span data-i18n="stats.gold"></span></div>
+      <div class="stat"><b data-count="1">0</b><span data-i18n="stats.first"></span></div>
+      <div class="stat"><b>🏆</b><span data-i18n="stats.best"></span></div>
+      <div class="stat"><b><i data-count="5">0</i>+</b><span data-i18n="stats.years"></span></div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section" id="about">
+      <header class="section-head reveal">
+        <p class="kicker mono" data-i18n="about.kicker"></p>
+        <h2 data-i18n="about.title"></h2>
+      </header>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p data-i18n="about.p1"></p>
+          <p data-i18n="about.p2"></p>
+          <p class="mono loc">📍 <span data-i18n="about.location"></span></p>
+        </div>
+        <aside class="about-side reveal">
+          <div class="card">
+            <h3 data-i18n="about.eduTitle"></h3>
+            <div class="edu">
+              <span class="mono when" data-i18n="about.edu1.when"></span>
+              <h4 data-i18n="about.edu1.title"></h4>
+              <p data-i18n="about.edu1.desc"></p>
+            </div>
+            <div class="edu">
+              <span class="mono when" data-i18n="about.edu2.when"></span>
+              <h4 data-i18n="about.edu2.title"></h4>
+              <p data-i18n="about.edu2.desc"></p>
+            </div>
+          </div>
+          <div class="card">
+            <h3 data-i18n="about.otherTitle"></h3>
+            <ul class="ticks">
+              <li data-i18n="about.other1"></li>
+              <li data-i18n="about.other2"></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section class="section" id="projects">
+      <header class="section-head reveal">
+        <p class="kicker mono" data-i18n="projects.kicker"></p>
+        <h2 data-i18n="projects.title"></h2>
+      </header>
+      <div class="filters reveal" role="tablist">
+        <button class="active" data-filter="all" data-i18n="projects.filterAll"></button>
+        <button data-filter="hw" data-i18n="projects.filterHw"></button>
+        <button data-filter="auto" data-i18n="projects.filterAuto"></button>
+        <button data-filter="cad" data-i18n="projects.filterCad"></button>
+      </div>
+      <div class="projects">
+        <article class="project reveal" data-tags="hw cad">
+          <div class="project-visual v1">
+            <svg viewBox="0 0 120 80" aria-hidden="true"><path d="M10 52 Q60 40 110 52" /><path d="M60 46 V66 M40 66 H80" /><path d="M48 66 l-8 8 M72 66 l8 8" /><path class="wave" d="M0 74 Q15 68 30 74 T60 74 T90 74 T120 74" /></svg>
+          </div>
+          <div class="project-body">
+            <span class="badge" data-i18n="projects.p1.badge"></span>
+            <h3 data-i18n="projects.p1.title"></h3>
+            <p data-i18n="projects.p1.desc"></p>
+            <ul class="tags"><li>Li-ion</li><li>BMS</li><li>Composites</li><li>Hydrodynamics</li></ul>
+          </div>
+        </article>
+        <article class="project reveal" data-tags="hw">
+          <div class="project-visual v2">
+            <svg viewBox="0 0 120 80" aria-hidden="true"><circle cx="30" cy="56" r="16" /><circle cx="90" cy="56" r="16" /><path d="M30 56 L50 30 H78 L90 56 M50 30 L62 56 H30 M74 22 H84" /><path class="bolt" d="M60 8 L54 20 H62 L56 32" /></svg>
+          </div>
+          <div class="project-body">
+            <span class="badge" data-i18n="projects.p2.badge"></span>
+            <h3 data-i18n="projects.p2.title"></h3>
+            <p data-i18n="projects.p2.desc"></p>
+            <ul class="tags"><li>Domel</li><li>BLDC</li><li>Battery pack</li><li>Research</li></ul>
+          </div>
+        </article>
+        <article class="project reveal" data-tags="auto hw">
+          <div class="project-visual v3">
+            <svg viewBox="0 0 120 80" aria-hidden="true"><path d="M10 14 V66 M110 14 V66" /><path d="M10 26 H34 M42 26 H70 M78 26 H110" /><path d="M34 20 V32 M42 20 V32" /><path d="M70 20 V32 M78 20 V32 M70 20 L78 32" /><circle cx="94" cy="54" r="7" /><path d="M10 54 H50 M58 54 H87 M101 54 H110 M50 48 V60 M58 48 V60" /></svg>
+          </div>
+          <div class="project-body">
+            <span class="badge" data-i18n="projects.p3.badge"></span>
+            <h3 data-i18n="projects.p3.title"></h3>
+            <p data-i18n="projects.p3.desc"></p>
+            <ul class="tags"><li>PLC</li><li>TIA Portal</li><li>Factory IO</li><li>C++</li><li>SMD/THT</li></ul>
+          </div>
+        </article>
+        <article class="project reveal" data-tags="cad hw">
+          <div class="project-visual v4">
+            <svg viewBox="0 0 120 80" aria-hidden="true"><rect x="14" y="10" width="92" height="60" rx="3" /><path d="M14 26 H106 M58 26 V44" /><path class="draw" d="M30 60 C40 40 52 62 62 48 S84 36 92 56" /><rect x="52" y="20" width="12" height="12" rx="2" /></svg>
+          </div>
+          <div class="project-body">
+            <span class="badge" data-i18n="projects.p4.badge"></span>
+            <h3 data-i18n="projects.p4.title"></h3>
+            <p data-i18n="projects.p4.desc"></p>
+            <ul class="tags"><li>Arduino</li><li>GRBL</li><li>3D print</li><li>Stepper</li></ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="section" id="experience">
+      <header class="section-head reveal">
+        <p class="kicker mono" data-i18n="exp.kicker"></p>
+        <h2 data-i18n="exp.title"></h2>
+      </header>
+      <ol class="timeline">
+        <li class="reveal"><div class="tl-meta mono">OMF elektronika</div><h3 data-i18n="exp.e1.title"></h3><p data-i18n="exp.e1.desc"></p></li>
+        <li class="reveal"><div class="tl-meta mono">Hella Saturnus Slovenija</div><h3 data-i18n="exp.e2.title"></h3><p data-i18n="exp.e2.desc"></p></li>
+        <li class="reveal"><div class="tl-meta mono">FabLab · ŠC Kranj</div><h3 data-i18n="exp.e3.title"></h3><p data-i18n="exp.e3.desc"></p></li>
+        <li class="reveal"><div class="tl-meta mono">Šolski center Kranj · 11/2022 – <span data-i18n="exp.now"></span></div><h3 data-i18n="exp.e4.title"></h3><p data-i18n="exp.e4.desc"></p></li>
+        <li class="reveal"><div class="tl-meta mono">Freelance</div><h3 data-i18n="exp.e5.title"></h3><p data-i18n="exp.e5.desc"></p></li>
+        <li class="reveal"><div class="tl-meta mono">Elektrotechnik Rehak · <span data-i18n="exp.vienna"></span> · 10/2023 – 11/2023</div><h3 data-i18n="exp.e6.title"></h3><p data-i18n="exp.e6.desc"></p></li>
+        <li class="reveal"><div class="tl-meta mono">Graverstvo Seifert · 06/2023 – 07/2023</div><h3 data-i18n="exp.e7.title"></h3><p data-i18n="exp.e7.desc"></p></li>
+        <li class="reveal"><div class="tl-meta mono">Telma Trade, Elektroenergetika Ljubljana · 07/2021 – 08/2021</div><h3 data-i18n="exp.e8.title"></h3><p data-i18n="exp.e8.desc"></p></li>
+      </ol>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section class="section" id="skills">
+      <header class="section-head reveal">
+        <p class="kicker mono" data-i18n="skills.kicker"></p>
+        <h2 data-i18n="skills.title"></h2>
+      </header>
+      <div class="skills">
+        <div class="skill card reveal tilt"><span class="skill-ico">⚡</span><h3 data-i18n="skills.s1.title"></h3><p data-i18n="skills.s1.desc"></p><ul class="tags"><li>PCB</li><li>AOI</li><li>SMD/THT</li><li>MCU</li></ul></div>
+        <div class="skill card reveal tilt"><span class="skill-ico">⚙️</span><h3 data-i18n="skills.s2.title"></h3><p data-i18n="skills.s2.desc"></p><ul class="tags"><li>PLC</li><li>Ladder</li><li>PID</li><li>TIA Portal</li></ul></div>
+        <div class="skill card reveal tilt"><span class="skill-ico">🧊</span><h3 data-i18n="skills.s3.title"></h3><p data-i18n="skills.s3.desc"></p><ul class="tags"><li>SolidWorks</li><li>Fusion</li><li>3D print</li><li>CNC</li><li>Laser</li></ul></div>
+        <div class="skill card reveal tilt"><span class="skill-ico">⌨️</span><h3 data-i18n="skills.s4.title"></h3><p data-i18n="skills.s4.desc"></p><ul class="tags"><li>Python</li><li>C/C++</li><li>Linux</li><li>Raspberry Pi</li></ul></div>
+      </div>
+      <div class="skills-extra">
+        <div class="card reveal">
+          <h3 data-i18n="skills.softTitle"></h3>
+          <ul class="pills" id="softSkills"></ul>
+        </div>
+        <div class="card reveal">
+          <h3 data-i18n="skills.langTitle"></h3>
+          <div class="lang-row"><div><b data-i18n="skills.lang.sl"></b><small data-i18n="skills.lang.slLevel"></small></div><div class="bar"><i style="--w:100%"></i></div></div>
+          <div class="lang-row"><div><b data-i18n="skills.lang.en"></b><small data-i18n="skills.lang.enLevel"></small></div><div class="bar"><i style="--w:80%"></i></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section contact" id="contact">
+      <div class="contact-box reveal">
+        <p class="kicker mono" data-i18n="contact.kicker"></p>
+        <h2 data-i18n="contact.title"></h2>
+        <p data-i18n="contact.text"></p>
+        <div class="contact-actions">
+          <a class="btn btn-primary" href="mailto:luka.treven5@gmail.com" data-i18n="contact.email"></a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/luka-treven-17b043256/" target="_blank" rel="noopener" data-i18n="contact.linkedin"></a>
+          <button class="btn btn-ghost" id="copyEmail" type="button" data-i18n="contact.copy"></button>
+        </div>
+        <p class="mono email">luka.treven5@gmail.com</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer mono">
+    <span>© <span id="year"></span> Luka Treven</span>
+    <span data-i18n="footer.made"></span>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
